@@ -10,11 +10,11 @@ public class WebTree {
 		this.root = new WebNode(rootPage);
 	}
 
-	public void setPostOrderScore(ArrayList<Keyword> keywords) throws IOException {
+	public void setPostOrderScore(ArrayList<Keyword> keywords) throws Exception {
 		setPostOrderScore(root, keywords);
 	}
 
-	private void setPostOrderScore(WebNode startNode, ArrayList<Keyword> keywords) throws IOException {
+	private void setPostOrderScore(WebNode startNode, ArrayList<Keyword> keywords) throws Exception {
 		startNode.addChild();
 		startNode.setNodeScore(keywords);
 	}

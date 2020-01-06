@@ -32,7 +32,7 @@
 		<link>
 			<name>WebContent/WEB-INF/lib/jsoup-1.12.1.jar</name>
 			<type>1</type>
-			<locationURI>PARENT-2-PROJECT_LOC/Downloads/jsoup-1.12.1.jar</locationURI>
+			<locationURI>PARENT-4-PROJECT_LOC/Downloads/jsoup-1.12.1.jar</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>

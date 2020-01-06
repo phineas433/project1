@@ -43,7 +43,7 @@ public class WebNode {
 		}
 	}
 	
-	private String fetchContent() throws IOException {
+	private String fetchContent() throws Exception {
 		String retVal = "";
 		URL url = new URL(this.url);
 		URLConnection conn = url.openConnection();
@@ -58,11 +58,11 @@ public class WebNode {
 
 	}
 
-	public void addChild() throws IOException {
+	public void addChild() throws Exception {
 		this.url = this.webPage.url;
 		this.content = fetchContent();
 
-		Document document = Jsoup.connect(url).get();
+		Document document = Jsoup.parse(content);
 		Elements lis = document.select("a[href]");
 		ArrayList<String> urls = new ArrayList();
 
@@ -77,7 +77,7 @@ public class WebNode {
 					uc.setRequestProperty("User-agent", "Chrome/7.0.517.44");
 					uc.connect();
 					int status = uc.getResponseCode();
-					if(status!= httpOK) {
+					if(status!= httpOK || citeUrl.indexOf(".PDF")!=-1 ||citeUrl.contains("http://www.google.com/search?num=15") || citeUrl.contains("https://books.google.com.tw/books?id=")) {
 						continue;
 					}
 					
@@ -90,7 +90,7 @@ public class WebNode {
 					}
 					break;
 				}		
-			} catch (IndexOutOfBoundsException e) {
+			} catch (Exception e) {
 			}
 		}
 	}

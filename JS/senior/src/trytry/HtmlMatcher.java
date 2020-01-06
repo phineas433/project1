@@ -105,23 +105,21 @@ public class HtmlMatcher {
 					citeUrl = citeUrl.substring(0,citeUrl.indexOf("&"));
 				}else {
 					citeUrl = citeUrl.substring(citeUrl.indexOf("=")+1,citeUrl.indexOf("&sa=U&ved"));
+				}	
+				java.net.URL urll=new java.net.URL(citeUrl);
+				java.net.HttpURLConnection uc = (java.net.HttpURLConnection) urll.openConnection();
+				uc.connect();
+				int status = uc.getResponseCode();
+				if(citeUrl.contains("youtube")|| status != httpOK || citeUrl.indexOf(".PDF")!=-1 ||citeUrl.contains("http://www.google.com/search?num=15") || citeUrl.contains("https://books.google.com.tw/books?id=")) {
+					continue;
 				}
-				if (!citeUrl.contains("youtube")){
 					
-					java.net.URL urll=new java.net.URL(citeUrl);
-					java.net.HttpURLConnection uc = (java.net.HttpURLConnection) urll.openConnection();
-					uc.connect();
-					int status = uc.getResponseCode();
-					if(status!= httpOK) {
-						continue;
-					}
-					
-					namelist.add(title);
-					urllist.add(citeUrl);
-					retVal.put(title, citeUrl);
-				}
+				namelist.add(title);
+				urllist.add(citeUrl);
+				retVal.put(title, citeUrl);
+				
 			
-			} catch (IndexOutOfBoundsException e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}

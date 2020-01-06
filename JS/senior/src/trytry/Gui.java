@@ -67,7 +67,7 @@ public class Gui extends HttpServlet {
 		}
 		
 		HtmlMatcher google = new HtmlMatcher(searchKeyword,button);
-		HashMap<String,String> query = google.query();
+		google.query();
 		HashMap<String, String> related = google.getrelated();
 		
 		Sort sort=new Sort();
@@ -75,7 +75,12 @@ public class Gui extends HttpServlet {
 		for(int i=0;i<google.namelist.size();i++) {
 			WebPage web = new WebPage(google.urllist.get(i),google.namelist.get(i));
 			WebTree tree = new WebTree(web);
-			tree.setPostOrderScore(keywords);
+			try {
+				tree.setPostOrderScore(keywords);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			System.out.println(tree.root.children);
 			System.out.println(tree.root.nodeScore);
 			sort.add(new WebList(google.namelist.get(i),google.urllist.get(i),tree.root.nodeScore));			
