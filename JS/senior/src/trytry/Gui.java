@@ -59,7 +59,7 @@ public class Gui extends HttpServlet {
 			keywords.add(new Keyword("senior",5,button));
 		}
 				
-		if (!input.isEmpty()) {
+		if (!input.isEmpty() && input_sp.length>2) {
 			for (int i=1; i<input_sp.length;i++) {
 				searchKeyword  = searchKeyword + "+" + input_sp[i];
 				keywords.add(new Keyword(input_sp[i],20,button));
