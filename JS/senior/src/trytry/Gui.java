@@ -55,11 +55,10 @@ public class Gui extends HttpServlet {
 		
 		keywords.add(new Keyword(input_sp[0],20,button));
 		keywords.add(new Keyword(button,5,button));
-		if(button != "") {
-			keywords.add(new Keyword("senior",5,button));
-		}
+		keywords.add(new Keyword("senior",5,button));
+
 				
-		if (!input.isEmpty() && input_sp.length>2) {
+		if (!input.isEmpty()) {
 			for (int i=1; i<input_sp.length;i++) {
 				searchKeyword  = searchKeyword + "+" + input_sp[i];
 				keywords.add(new Keyword(input_sp[i],20,button));

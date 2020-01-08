@@ -83,13 +83,14 @@ public class WebNode {
 					
 					this.children.add(new WebNode(new WebPage(citeUrl, title)));
 					
+					
+					if (children.size() == 3) {
+						for(WebNode child:children) {
+							child.parent=this;
+						}
+						break;
 					}
-				if (children.size() == 3) {
-					for(WebNode child:children) {
-						child.parent=this;
-					}
-					break;
-				}		
+				}
 			} catch (Exception e) {
 			}
 		}

@@ -58,7 +58,8 @@ public class HtmlMatcher {
 			}
 			break;
 		default:
-			this.searchKeyword = searchKeyword;
+			this.searchKeyword = searchKeyword + "+senior";
+			break;
 		}
 		
 		System.out.println(this.searchKeyword);
