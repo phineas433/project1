@@ -1,5 +1,4 @@
 package trytry;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,7 +12,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 
 /**
  * Servlet implementation class Gui
@@ -54,8 +52,20 @@ public class Gui extends HttpServlet {
 		ArrayList<Keyword> keywords = new ArrayList<>();
 		
 		keywords.add(new Keyword(input_sp[0],20,button));
-		keywords.add(new Keyword(button,5,button));
+		if(button!="") {
+			keywords.add(new Keyword(button,5,button));
+			if(button=="sports") {
+				keywords.add(new Keyword("運動",5,button));
+			}else if(button =="dating") {
+				keywords.add(new Keyword("交友",5,button));
+			} else if(button=="games") {
+				keywords.add(new Keyword("娛樂",5,button));
+			}else if(button =="music") {
+				keywords.add(new Keyword("音樂",5,button));
+			} 
+		}
 		keywords.add(new Keyword("senior",5,button));
+		keywords.add(new Keyword("老年人",5,button));
 
 				
 		if (!input.isEmpty()) {

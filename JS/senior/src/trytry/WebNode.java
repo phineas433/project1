@@ -77,7 +77,7 @@ public class WebNode {
 					uc.setRequestProperty("User-agent", "Chrome/7.0.517.44");
 					uc.connect();
 					int status = uc.getResponseCode();
-					if(status!= httpOK || citeUrl.indexOf(".PDF")!=-1 ||citeUrl.contains("http://www.google.com/search?num=15") || citeUrl.contains("https://books.google.com.tw/books?id=")) {
+					if(status!= httpOK || citeUrl.indexOf(".PDF")!=-1 ||citeUrl.contains("http://www.google.com.tw/search?num=20") || citeUrl.contains("https://books.google.com.tw/books?id=")) {
 						continue;
 					}
 					

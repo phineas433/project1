@@ -40,7 +40,7 @@ public class KeywordCounter {
 
 		int retVal = 0;
 		while(true) {
-		int num = content.indexOf(keyword);
+		int num = new String(content.getBytes(),"UTF-8").indexOf(new String(keyword.getBytes(),"UTF-8"));
 		if (num >= 0) {
 			content = content.substring(num + keyword.length());
 			retVal++;

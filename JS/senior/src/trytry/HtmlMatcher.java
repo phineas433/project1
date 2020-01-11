@@ -28,42 +28,79 @@ public class HtmlMatcher {
 
 	
 	public HtmlMatcher(String searchKeyword, String kind){
-		switch (kind) {
-		case "sports":
-			if (searchKeyword != "sports") {
-				this.searchKeyword = searchKeyword + "+sports+senior";
-			} else {
+		if(searchKeyword.getBytes().length == searchKeyword.length()) {
+			switch (kind) {
+			case "sports":
+				if (searchKeyword != "sports") {
+					this.searchKeyword = searchKeyword + "+sports+senior";
+				} else {
+					this.searchKeyword = searchKeyword + "+senior";
+				}
+				break;
+			case "dating":
+				if (searchKeyword != "dating") {
+					this.searchKeyword = searchKeyword + "+dating+senior";
+				} else {
+					this.searchKeyword = searchKeyword + "+senior";
+				}
+				break;
+			case "games":
+				if (searchKeyword != "games") {
+					this.searchKeyword = searchKeyword + "+games+senior";
+				} else {
+					this.searchKeyword = searchKeyword + "+senior";
+				}
+				break;
+			case "music":
+				if (searchKeyword != "music") {
+					this.searchKeyword = searchKeyword + "+music+senior";
+				} else {
+					this.searchKeyword = searchKeyword + "+senior";
+				}
+				break;
+			default:
 				this.searchKeyword = searchKeyword + "+senior";
+				break;
 			}
-			break;
-		case "dating":
-			if (searchKeyword != "dating") {
-				this.searchKeyword = searchKeyword + "+dating+senior";
-			} else {
-				this.searchKeyword = searchKeyword + "+senior";
+		}else {
+			switch (kind) {
+			case "sports":
+				if (searchKeyword != "運動") {
+					this.searchKeyword = searchKeyword + "+運動+老年人";
+				} else {
+					this.searchKeyword = searchKeyword + "+老年人";
+				}
+				break;
+			case "dating":
+				if (searchKeyword != "交友") {
+					this.searchKeyword = searchKeyword + "+交友+老年人";
+				} else {
+					this.searchKeyword = searchKeyword + "+老年人";
+				}
+				break;
+			case "games":
+				if (searchKeyword != "娛樂") {
+					this.searchKeyword = searchKeyword + "+娛樂+老年人";
+				} else {
+					this.searchKeyword = searchKeyword + "+老年人";
+				}
+				break;
+			case "music":
+				if (searchKeyword != "音樂") {
+					this.searchKeyword = searchKeyword + "+音樂+老年人";
+				} else {
+					this.searchKeyword = searchKeyword + "+老年人";
+				}
+				break;
+			default:
+				this.searchKeyword = searchKeyword + "+老年人";
+				break;
 			}
-			break;
-		case "games":
-			if (searchKeyword != "games") {
-				this.searchKeyword = searchKeyword + "+games+senior";
-			} else {
-				this.searchKeyword = searchKeyword + "+senior";
-			}
-			break;
-		case "music":
-			if (searchKeyword != "music") {
-				this.searchKeyword = searchKeyword + "+music+senior";
-			} else {
-				this.searchKeyword = searchKeyword + "+senior";
-			}
-			break;
-		default:
-			this.searchKeyword = searchKeyword + "+senior";
-			break;
+			
 		}
 		
 		System.out.println(this.searchKeyword);
-		this.url ="http://www.google.com/search?q="+this.searchKeyword+"&oe=utf8&num=15";
+		this.url ="http://www.google.com.tw/search?q="+this.searchKeyword+"&oe=utf8&num=20";
 	}
 	
 	private String fetchContent() throws IOException{
@@ -111,7 +148,7 @@ public class HtmlMatcher {
 				java.net.HttpURLConnection uc = (java.net.HttpURLConnection) urll.openConnection();
 				uc.connect();
 				int status = uc.getResponseCode();
-				if(citeUrl.contains("youtube")|| status != httpOK || citeUrl.indexOf(".PDF")!=-1 ||citeUrl.contains("http://www.google.com/search?num=15") || citeUrl.contains("https://books.google.com.tw/books?id=")) {
+				if(citeUrl.contains("youtube")|| status != httpOK || citeUrl.indexOf(".PDF")!=-1 ||citeUrl.contains("http://www.google.com.tw/search?num=20") || citeUrl.contains("https://books.google.com.tw/books?id=")) {
 					continue;
 				}
 					
